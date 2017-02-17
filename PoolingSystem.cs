@@ -17,7 +17,7 @@ public static class PoolingSystem {
         mainPool = new Dictionary<GameObject, PrefabPool>();
         _goToMainPool = new Dictionary<GameObject, PrefabPool>();
     }
-    public static void ClearPools()
+    static public void ClearPools()
     {
         mainPool.Clear();
         _goToMainPool.Clear();
@@ -106,13 +106,10 @@ class PrefabPool
             data.gameObject.transform.position = position;
         }
 
-        if (PoolManagerNet.gameStarted)
-        {
+
             foreach (var x in data.poolableComponents)
-            {
                 x.Spawned();
-            }
-        }
+
 
         activeList.Add(data.gameObject, data);
 
@@ -130,13 +127,9 @@ class PrefabPool
 
         data = activeList[obj];
 
-        if (PoolManagerNet.gameStarted)
-        {
            foreach (var x in data.poolableComponents)
-            {
                 x.Despawned();
-            }
-        }
+           
 
         if (data.gameObject != null)
            data.gameObject.SetActive(false);
