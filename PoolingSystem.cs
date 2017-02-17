@@ -7,7 +7,8 @@ interface IPoolableComponent
     void Despawned();
 }
 
-public static class PoolingSystem {
+public static class PoolingSystem 
+{
     static Dictionary<GameObject, PrefabPool> mainPool;
     static Dictionary<GameObject, PrefabPool> _goToMainPool;
     public static Transform poolHolder;
